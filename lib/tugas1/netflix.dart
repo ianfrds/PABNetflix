@@ -8,7 +8,7 @@ class Netflix extends StatelessWidget {
     Widget header() {
       return Container(
         padding: EdgeInsets.only(
-          top: MediaQuery.of(context).size.height * 0.05,
+          top: MediaQuery.of(context).size.height * 0.02,
           bottom: MediaQuery.of(context).size.height * 0.01,
         ),
         child: Row(
@@ -20,7 +20,8 @@ class Netflix extends StatelessWidget {
                 Navigator.pushNamed(context, '/');
               },
             ),
-            Expanded(
+            Padding(
+              padding: EdgeInsets.only(left: 100),
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
@@ -47,8 +48,7 @@ class Netflix extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.of(context, rootNavigator: true)
-                        .pushNamed('/details');
+                    Navigator.pushNamed(context, '/details');
                   },
                   child: Image.asset(
                     'assets/film.png',

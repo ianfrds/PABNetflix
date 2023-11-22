@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tugas_praktikum/pertemuan1/homePage.dart';
 import 'package:tugas_praktikum/tugas1/details.dart';
 import 'package:tugas_praktikum/tugas1/netflix.dart';
+import 'package:tugas_praktikum/tugas2/profile.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -36,6 +37,10 @@ class _MainPageState extends State<MainPage> {
             icon: Icon(Icons.movie),
             label: 'Movie',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box_rounded),
+            label: 'Profile',
+          ),
         ],
       );
     }
@@ -46,6 +51,8 @@ class _MainPageState extends State<MainPage> {
           return Netflix();
         case 1:
           return Detail();
+        case 2:
+          return EditProfilePage();
         default:
           return HomePage();
       }
