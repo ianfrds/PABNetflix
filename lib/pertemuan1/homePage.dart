@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas_praktikum/navigation.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -90,7 +91,7 @@ class HomePage extends StatelessWidget {
                   ),
                   fixedSize: MaterialStateProperty.all(Size(150, 45))),
               onPressed: () {
-                Navigator.pushNamed(context, '/netflix');
+                Navigator.pushNamed(context, '/nav');
               },
               child: Text(
                 'Masuk',

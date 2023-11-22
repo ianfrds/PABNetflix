@@ -1,21 +1,35 @@
 import 'package:flutter/material.dart';
 
 class Netflix extends StatelessWidget {
-  const Netflix({super.key});
+  const Netflix({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     Widget header() {
       return Container(
-        padding: EdgeInsets.only(top: 50),
-        child: Column(
+        padding: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.05,
+          bottom: MediaQuery.of(context).size.height * 0.01,
+        ),
+        child: Row(
           children: [
-            Align(
-              child: Text(
-                'NETFLIX',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.red,
+            IconButton(
+              icon: Icon(Icons.arrow_back),
+              color: Colors.white,
+              onPressed: () {
+                Navigator.pushNamed(context, '/');
+              },
+            ),
+            Expanded(
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'NETFLIX',
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red,
+                  ),
                 ),
               ),
             ),
@@ -26,29 +40,64 @@ class Netflix extends StatelessWidget {
 
     Widget picture() {
       return Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Column(
           children: [
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, '/details');
-              },
-              child: Image.asset(
-                'assets/Saly-42.png',
-                width: 200,
-                height: 300,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context, rootNavigator: true)
+                        .pushNamed('/details');
+                  },
+                  child: Image.asset(
+                    'assets/film.png',
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.3,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context, rootNavigator: true)
+                        .pushNamed('/details');
+                  },
+                  child: Image.asset(
+                    'assets/film.png',
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.3,
+                  ),
+                ),
+              ],
             ),
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, '/details');
-              },
-              child: Image.asset(
-                'assets/Saly-42.png',
-                width: 200,
-                height: 300,
-              ),
+            SizedBox(height: 1),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context, rootNavigator: true)
+                        .pushNamed('/details');
+                  },
+                  child: Image.asset(
+                    'assets/film.png',
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.3,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.of(context, rootNavigator: true)
+                        .pushNamed('/details');
+                  },
+                  child: Image.asset(
+                    'assets/film.png',
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.3,
+                  ),
+                ),
+              ],
             ),
+            // You can add more rows as needed
           ],
         ),
       );
@@ -57,12 +106,14 @@ class Netflix extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SafeArea(
-        child: Container(
-          child: Column(
-            children: [
-              header(),
-              picture(),
-            ],
+        child: SingleChildScrollView(
+          child: Container(
+            child: Column(
+              children: [
+                header(),
+                picture(),
+              ],
+            ),
           ),
         ),
       ),
