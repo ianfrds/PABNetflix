@@ -1,8 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:tugas_praktikum/navigation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String? nama;
+  String? nbi;
+
+  void data() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    final String? _nama = prefs.getString('nama');
+    final String? _nbi = prefs.getString('nbi');
+
+    setState(() {
+      nama = _nama;
+      nbi = _nbi;
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    data();
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget header() {
@@ -30,7 +58,7 @@ class HomePage extends StatelessWidget {
             ),
             Align(
               child: Text(
-                '1462100008',
+                '$nbi',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
@@ -59,14 +87,14 @@ class HomePage extends StatelessWidget {
       );
     }
 
-    Widget nama() {
+    Widget namas() {
       return Container(
         margin: EdgeInsets.only(top: 40),
         child: Column(
           children: [
             Align(
               child: Text(
-                'Gilang Romy Lesmana',
+                '$nama',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
             ),
@@ -111,7 +139,7 @@ class HomePage extends StatelessWidget {
             children: [
               header(),
               picture(),
-              nama(),
+              namas(),
               footer(),
             ],
           ),

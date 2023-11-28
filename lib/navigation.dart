@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_praktikum/pertemuan1/homePage.dart';
+import 'package:tugas_praktikum/pertemuan3/aktivitas3.dart';
 import 'package:tugas_praktikum/tugas1/details.dart';
 import 'package:tugas_praktikum/tugas1/netflix.dart';
 import 'package:tugas_praktikum/tugas2/profile.dart';
@@ -41,6 +42,10 @@ class _MainPageState extends State<MainPage> {
             icon: Icon(Icons.account_box_rounded),
             label: 'Profile',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pending),
+            label: 'Pendaftaran',
+          ),
         ],
       );
     }
@@ -53,6 +58,8 @@ class _MainPageState extends State<MainPage> {
           return Detail();
         case 2:
           return EditProfilePage();
+        case 3:
+          return Pendaftaran();
         default:
           return HomePage();
       }
